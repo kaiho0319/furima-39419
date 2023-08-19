@@ -46,7 +46,7 @@
 | shipping_origin_id      | string  | null: false        |
 | city_ward_or_town       | string  | null: false        |
 | house_number            | string  | null: false        |
-| building_name           | string  | null: false        |
+| building_name           | string  |                    |
 | phone_number            | string  | null: false        |
 | purchase                | references |  null: false foreign_key: true |
 
