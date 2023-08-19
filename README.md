@@ -34,14 +34,13 @@
 
 ### Association
 - belongs_to :user
-- has_one purchasse
+- has_one :purchasse
 
 
 ## shippingsテーブル
 
 | Column                  | Type    | Options            |
 |-------------------------|---------|--------------------|
-| address                 | string  | null: false        |
 | postal_code             | string  | null: false        |
 | shipping_origin_id      | string  | null: false        |
 | city_ward_or_town       | string  | null: false        |
@@ -52,7 +51,7 @@
 
 
 ### Association
-- belongs_to purchase
+- belongs_to :purchase
 
 
 ## purchasesテーブル
