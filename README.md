@@ -1,39 +1,40 @@
 ## usersテーブル
 
-| Column           | Type    | Options                  |
-|------------------|---------|--------------------------|
-| name             | string  | null: false              |
-| email            | string  | null: false unique: true |
-| nickname         | string  | null: false              |
-| password         | integer | null: false              |
-| name in katakana | string  | null: false              |
-| date of birth    | date    | null: false              |
+| Column                | Type    | Options                  |
+|-----------------------|---------|--------------------------|
+| nickname              | string  | null: false              |
+| email                 | string  | null: false unique: true |
+| encrypted_password    | string  | null: false              |
+| name                  | string  | null: false              |
+| last_name             | string  | null: false              |
+| name_in_katakana      | string  | null: false              |
+| last_name_in_katakana | string  | null: false              |
+| date_of_birth         | date    | null: false              |
 
 
 ### Association
 - has_many :items
-- has_many :shippings
 - has_many :purchasses
 
 
 ## itemsテーブル
 
-| Column                  | Type      | Options                       |
-|-------------------------|-----------|-------------------------------|
-| product name            | string    | null: false                   |
-| product description     | text      | null: false                   |
-| category information    | enum      | null: false                   |
-| item condition          | enum      | null: false                   |
-| shipping responsibility | enum      | null: false                   |
-| processing time         | enum      | null: false                   |
-| price                   | integer   | null: false                   |
-| shipping origin         | enum      | null: false                   |
-| user                    | references |  null: false foreign_key: true |
+| Column                     | Type       | Options                       |
+|----------------------------|------------|-------------------------------|
+| product_name               | string     | null: false                   |
+| product_description        | text       | null: false                   |
+| category_information_id    | integer    | null: false                   |
+| item_condition_id          | integer    | null: false                   |
+| shipping_responsibility_id | integer    | null: false                    |
+| processing_time_id         | integer    | null: false                    |
+| price                      | integer    | null: false                    |
+| shipping_origin_id         | integer    | null: false                    |
+| user                       | references |  null: false foreign_key: true |
+
 
 ### Association
-- belongs_to :users
-- has_one shippings
-- has_one purchasses
+- belongs_to :user
+- has_one purchasse
 
 
 ## shippingsテーブル
@@ -41,20 +42,17 @@
 | Column                  | Type    | Options            |
 |-------------------------|---------|--------------------|
 | address                 | string  | null: false        |
-| postal code             | integer | null: false        |
-| prefecture              | string  | null: false        |
-| city, ward, or town     | string  | null: false        |
-| house number            | string  | null: false        |
-| building name           | string  | null: false        |
-| phone number            | integer | null: false        |
-| user                    | references |  null: false foreign_key: true |
-| item                    | references |  null: false foreign_key: true |
+| postal_code             | string  | null: false        |
+| shipping_origin_id      | string  | null: false        |
+| city_ward_or_town       | string  | null: false        |
+| house_number            | string  | null: false        |
+| building_name           | string  | null: false        |
+| phone_number            | string  | null: false        |
+| purchase                | references |  null: false foreign_key: true |
 
 
 ### Association
-- belongs_to :users
-- belongs_to :items
-- has_one purchases
+- has_one purchase
 
 
 ## purchasesテーブル
@@ -63,10 +61,9 @@
 |-------------------------|------------|-------------------------------|
 | user                    | references | null: false foreign_key: true |
 | item                    | references | null: false foreign_key: true |
-| shipping                | references | null: false foreign_key: true |
 
 
 ### Association
-- belongs_to :users
-- belongs_to :items
-- belongs_to :shippings
+- belongs_to :user
+- belongs_to :item
+- belongs_to :shipping
