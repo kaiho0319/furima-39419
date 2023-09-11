@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  validates :email, presence: true, uniqueness: { case_sensitive: true }
+
   has_many :items
   has_many :purchases
 
