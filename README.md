@@ -7,7 +7,7 @@
 | encrypted_password    | string  | null: false              |
 | name                  | string  | null: false              |
 | last_name             | string  | null: false              |
-| name_in_katakana      | string  | null: false              |
+| name_in_katakana      | string  | null: false              n
 | last_name_in_katakana | string  | null: false              |
 | date_of_birth         | date    | null: false              |
 
