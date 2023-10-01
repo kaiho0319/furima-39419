@@ -2,6 +2,8 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :purchasse
+  has_one_attached :image
+
 
   validatas :
   validatas :product_name, presence: true
