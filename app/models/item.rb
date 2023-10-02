@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
 
-  validatas :
+  validatas :image, presence: true
   validatas :product_name, presence: true
   validatas :product_description, presence: true
   validates :category_information_id_id, presence: true, numericality: { other_than: 1 }
