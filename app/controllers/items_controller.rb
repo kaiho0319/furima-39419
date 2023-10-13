@@ -37,7 +37,7 @@ end
 
 def destroy
   @item.destroy
-  redirect_to items_path
+  redirect_to root_path
 end
 
 
