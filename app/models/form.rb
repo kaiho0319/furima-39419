@@ -2,7 +2,8 @@ class Form
   include ActiveModel::Model
   attr_accessor :token,:fuga...
 
-  # ここにバリデーションの処理を書く
+  validates :price, presence: true
+  validates :token, presence: true
 
   def save
     # 各テーブルにデータを保存する処理を書く
