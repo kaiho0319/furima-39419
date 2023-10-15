@@ -17,16 +17,8 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-
-    @order = Order.new(order_params)
-    if @order.valid?
-      pay_item
-      @order.save
-      return redirect_to root_path
-    else
-      render 'index'
-    end
   end
+
 
 
 def show
@@ -53,15 +45,6 @@ end
 
   private
 
-  def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(
-      amount: order_params[:price],
-      card: order_params[:token],
-      currency: 'jpy'
-    )
-  end
-
   def set_item
     @item = Item.find(params[:id])
   end
@@ -78,10 +61,6 @@ end
 
   def item_params
     params.require(:item).permit(:product_name, :product_description, :category_information_id, :item_condition_id, :shipping_responsibility_id, :processing_time_id, :price, :shipping_origin_id, :image).merge(user_id: current_user.id)
-  end
-
-  def order_params
-    params.require(:order).permit(:price).merge(token: params[:token])
   end
 
 end
