@@ -7,7 +7,6 @@ class User < ApplicationRecord
   validates :last_name_in_katakana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
   validates :date_of_birth, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
-  # validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze}
 
 
   has_many :items
