@@ -11,8 +11,6 @@ FactoryBot.define do
     order
     token {"tok_abcdefghijk00000000000000000"}
 
-    association :user
-    association :item
 
     trait :order do
      user

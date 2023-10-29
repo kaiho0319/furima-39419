@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,11 +21,6 @@ class ItemsController < ApplicationController
 
   def show
     @user = @item.user
-    # if current_user == @item.user
-    #   redirect_to root_path
-    # else
-    #   render :show
-    # end
   end
 
   def edit
