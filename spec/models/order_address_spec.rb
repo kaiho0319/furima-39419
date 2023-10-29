@@ -54,8 +54,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
-      it 'phone_numberが12桁以上の半角数値のみでないと保存できないこと' do
-        @order_address.phone_number = '1'
+      it 'phone_numberが12桁以上の半角数値だと保存できないこと' do
+        @order_address.phone_number = '12345678900000'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'phone_numberが半角数字以外が含まれている場合は購入できないだと保存できないこと' do
+        @order_address.phone_number = '1234567891あ'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
